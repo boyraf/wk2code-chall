@@ -51,7 +51,13 @@ function BotCollection({ onEnlistBot, onCreateBot }) {
         <ul>
           {bots.map((bot) => (
             <li key={bot.id}>
-              <span>{bot.name}</span>
+              <img src={`${bot.avatar_url}`} alt={`${bot.bot_class}`}/>
+            r<span>{bot.name}</span>
+            <span>{bot.health}</span>
+            <span>{bot.damage}</span>
+            <span>{bot.armor}</span>
+            <span>{bot.bot_class}</span>
+            <span>{bot.catchphrase}</span>
               {bot.enlisted ? (
                 <button disabled>Enlisted</button>
               ) : (

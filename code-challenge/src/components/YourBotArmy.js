@@ -39,16 +39,22 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
       <h2>Your Bot Army</h2>
       <ul>
         {bots.map((bot) => (
-          <li key={bot.id} className="enlisted">
-            <span>{bot.name}</span>
-            <span>{bot.health}</span>
-            <span>{bot.damage}</span>
-            <span>{bot.armor}</span>
-            <span>{bot.bot_class}</span>
-            <span>{bot.catchphrase}</span>
-            <button onClick={() => handleReleaseBot(bot.id)}>Release</button>
-            <button onClick={() => handleDischargeBot(bot.id)}>Discharge</button>
-          </li>
+            
+            <div key={bot.id} className="enlisted-bot">
+            <img src={`${bot.avatar_url}`} alt={`${bot.bot_class}`} className="bot-avatar" />
+            <div className="bot-details">
+              <span className="bot-name">{bot.name}</span>
+              <span className="bot-health">{bot.health}</span>
+              <span className="bot-damage">{bot.damage}</span>
+              <span className="bot-armor">{bot.armor}</span>
+              <span className="bot-class">{bot.bot_class}</span>
+              <span className="bot-catchphrase">{bot.catchphrase}</span>
+            </div>
+            <div className="bot-actions">
+              <button onClick={() => handleReleaseBot(bot.id)}>Release</button>
+              <button onClick={() => handleDischargeBot(bot.id)}>Discharge</button>
+            </div>
+          </div>
         ))}
       </ul>
     </div>
