@@ -215,3 +215,9 @@ color: #ffd700;
 background-color: #ccc;
 cursor: not-allowed;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 20px; /* gap between the divs */
+}

@@ -39,7 +39,7 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
       <h2>Your Bot Army</h2>
       <ul>
         {bots.map((bot) => (
-            
+            <div className="container">
             <div key={bot.id} className="army-card">
             <img src={`${bot.avatar_url}`} alt={`${bot.bot_class}`} />
             <div className="bot-details">
@@ -53,6 +53,7 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
               <button onClick={() => handleReleaseBot(bot.id)}>Release</button>
               <button onClick={() => handleDischargeBot(bot.id)}>Discharge</button>
             </div>
+          </div>
           </div>
         ))}
       </ul>
