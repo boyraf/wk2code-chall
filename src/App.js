@@ -38,8 +38,9 @@ function App() {
   };
 
   return (
+  <div>
     <Router>
-      <div>
+      
         <Nav enlistedBots={enlistedBots} />
         <Switch>
           <Route exact path="/">
@@ -60,8 +61,13 @@ function App() {
             />
           </Route>
         </Switch>
-      </div>
-    </Router>
+        </Router>
+        <YourBotArmy />
+        <BotCollection />
+              </div>
+    
+    
+
   );
 }
 
