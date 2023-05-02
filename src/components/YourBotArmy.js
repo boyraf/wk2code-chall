@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 function YourBotArmy({ onReleaseBot, onDischargeBot }) {
   const [bots, setBots] = useState([]);
 
@@ -11,18 +12,6 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
     }
     fetchBots();
   }, []);
-  
-
-  const handleReleaseBot = async (id) => {
-    const response = await fetch(`http://localhost:3000/bots/${id}/release`, {
-      method: "PUT",
-    });
-    if (response.ok) {
-      const updatedBot = await response.json();
-      setBots((prevBots) => prevBots.filter((bot) => bot.id !== updatedBot.id));
-      onReleaseBot(updatedBot);
-    }
-  };
 
   const handleDischargeBot = async (id) => {
     const response = await fetch(`http://localhost:3000/bots/${id}`, {
@@ -39,8 +28,7 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
       <h2>Your Bot Army</h2>
       <ul>
         {bots.map((bot) => (
-            <div className="container">
-            <div key={bot.id} className="army-card">
+          <div key={bot.id} className="army-card">
             <img src={`${bot.avatar_url}`} alt={`${bot.bot_class}`} />
             <div className="bot-details">
               <span className="bot-name">Name:{bot.name}</span>
@@ -49,11 +37,9 @@ function YourBotArmy({ onReleaseBot, onDischargeBot }) {
               <span className="bot-armor">Armor:{bot.armor}</span>
               <span className="bot-class">Class:{bot.bot_class}</span>
               <span className="bot-catchphrase">Catchphrase:{bot.catchphrase}</span>
-            
-              <button onClick={() => handleReleaseBot(bot.id)}>Release</button>
+
               <button onClick={() => handleDischargeBot(bot.id)}>Discharge</button>
             </div>
-          </div>
           </div>
         ))}
       </ul>
