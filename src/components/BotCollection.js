@@ -12,28 +12,28 @@ function BotCollection({ onEnlistBot, onCreateBot }) {
       fetchBots();
     }, []);
   
-    const handleEnlistBot = async (id) => {
-      try {
-        const response = await fetch(`http://localhost:3000/bots/${id}/enlist`, {
-          method: "PUT",
-        });
-    
-        if (response.ok) {
-          const updatedBot = await response.json();
-          setBots((prevBots) =>
-            prevBots.map((bot) =>
-              bot.id === updatedBot.id ? { ...bot, enlisted: true } : bot
-            )
-          );
-          onEnlistBot(updatedBot);
-        } else {
-          console.log(`Error: ${response.status} ${response.statusText}`);
-        }
-      } catch (error) {
-        console.log(`Error: ${error.message}`);
-      }
-    };
-    
+   const handleEnlistBot = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:3000/bots/${id}/enlist`, {
+      method: "PUT",
+    });
+
+    if (response.ok) {
+      const updatedBot = await response.json();
+      setBots((prevBots) =>
+        prevBots.map((bot) =>
+          bot.id === updatedBot.id ? { ...bot, enlisted: true } : bot
+        )
+      );
+      onEnlistBot(updatedBot);
+    } else {
+      console.log(`Error: ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.log(`Error: ${error.message}`);
+  }
+};
+
     
     
   

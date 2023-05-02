@@ -18,3 +18,5 @@ can custom build your own Bot Army!
 - Discharge a bot from their service forever, by clicking the red button marked
   "x", which would delete the bot both from the backend and from the
   `YourBotArmy` on the frontend.
+
+  http://boyraf.github.io/wk2code-chall
