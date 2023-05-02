@@ -46,7 +46,7 @@ function App() {
           <Route exact path="/">
             <h1>Welcome to My App</h1>
           </Route>
-          <Route path="/bot-collection">
+          <Route path="/bot-collection">zx zxc z zx 
             <BotCollection
               enlistedBots={enlistedBots}
               onEnlistBot={handleEnlistBot}
@@ -62,7 +62,7 @@ function App() {
           </Route>
         </Switch>
         </Router>
-        <YourBotArmy />
+        <YourBotArmy />23s4WQ
         <BotCollection />
               </div>
     
