@@ -13,19 +13,27 @@ function BotCollection({ onEnlistBot, onCreateBot }) {
     }, []);
   
     const handleEnlistBot = async (id) => {
-      const response = await fetch(`http://localhost:3000/bots/${id}/enlist`, {
-        method: "PUT",
-      });
-      if (response.ok) {
-        const updatedBot = await response.json();
-        setBots((prevBots) =>
-          prevBots.map((bot) =>
-            bot.id === updatedBot.id ? { ...bot, enlisted: "true" } : bot
-          )
-        );
-        onEnlistBot(updatedBot);
+      try {
+        const response = await fetch(`http://localhost:3000/bots/${id}/enlist`, {
+          method: "PUT",
+        });
+    
+        if (response.ok) {
+          const updatedBot = await response.json();
+          setBots((prevBots) =>
+            prevBots.map((bot) =>
+              bot.id === updatedBot.id ? { ...bot, enlisted: true } : bot
+            )
+          );
+          onEnlistBot(updatedBot);
+        } else {
+          console.log(`Error: ${response.status} ${response.statusText}`);
+        }
+      } catch (error) {
+        console.log(`Error: ${error.message}`);
       }
     };
+    
     
     
   
@@ -53,12 +61,12 @@ function BotCollection({ onEnlistBot, onCreateBot }) {
           {bots.map((bot) => (
             <li key={bot.id}>
               <img src={`${bot.avatar_url}`} alt={`${bot.bot_class}`}/>
-            <span>{bot.name}</span>
-            <span>{bot.health}</span>
-            <span>{bot.damage}</span>
-            <span>{bot.armor}</span>
-            <span>{bot.bot_class}</span>
-            <span>{bot.catchphrase}</span>
+            <span>Name:{bot.name}</span>
+            <span>Health:{bot.health}</span>
+            <span>Damage:{bot.damage}</span>
+            <span>Armor{bot.armor}</span>
+            <span>Class:{bot.bot_class}</span>
+            <span>catchphrase:{bot.catchphrase}</span>
               {bot.enlisted ? (
                 <button disabled>Enlisted</button>
               ) : (
